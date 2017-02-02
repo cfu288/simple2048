@@ -7,11 +7,9 @@
 //
 
 #import "ViewController.h"
-#import <SpriteKit/SpriteKit.h>
 
 @interface ViewController ()
 @end
-
 
 @implementation ViewController
 @synthesize textLabel;
@@ -19,10 +17,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    SKView *spriteView = (SKView *) self.view;
-    spriteView.showsDrawCount = YES;
-    spriteView.showsNodeCount = YES;
-    spriteView.showsFPS = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -30,12 +24,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    HelloScene* hello = [[HelloScene alloc] initWithSize:CGSizeMake(768,1024)];
-    SKView *spriteView = (SKView *) self.view;
-    [spriteView presentScene: hello];
-}
 
 - (IBAction)swipeDetectedUp:(id)sender {
     textLabel.text = @"Up";

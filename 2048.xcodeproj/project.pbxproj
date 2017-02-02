@@ -15,7 +15,6 @@
 		8311BADF1E381FA200166B2B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8311BADD1E381FA200166B2B /* LaunchScreen.storyboard */; };
 		8311BAEA1E381FA200166B2B /* _048Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8311BAE91E381FA200166B2B /* _048Tests.m */; };
 		8311BAF51E381FA200166B2B /* _048UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8311BAF41E381FA200166B2B /* _048UITests.m */; };
-		837F017D1E3AAED800BCC488 /* HelloScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 837F017C1E3AAED800BCC488 /* HelloScene.m */; };
 		837F01801E3AB14300BCC488 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 837F017F1E3AB14300BCC488 /* SpriteKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,8 +52,6 @@
 		8311BAF01E381FA200166B2B /* 2048UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 2048UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8311BAF41E381FA200166B2B /* _048UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _048UITests.m; sourceTree = "<group>"; };
 		8311BAF61E381FA200166B2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		837F017B1E3AAED800BCC488 /* HelloScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelloScene.h; sourceTree = "<group>"; };
-		837F017C1E3AAED800BCC488 /* HelloScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelloScene.m; sourceTree = "<group>"; };
 		837F017F1E3AB14300BCC488 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -116,8 +113,6 @@
 				8311BADB1E381FA200166B2B /* Assets.xcassets */,
 				8311BADD1E381FA200166B2B /* LaunchScreen.storyboard */,
 				8311BAE01E381FA200166B2B /* Info.plist */,
-				837F017B1E3AAED800BCC488 /* HelloScene.h */,
-				837F017C1E3AAED800BCC488 /* HelloScene.m */,
 				8311BACF1E381FA200166B2B /* Supporting Files */,
 			);
 			path = 2048;
@@ -294,7 +289,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8311BAD71E381FA200166B2B /* ViewController.m in Sources */,
-				837F017D1E3AAED800BCC488 /* HelloScene.m in Sources */,
 				8311BAD41E381FA200166B2B /* AppDelegate.m in Sources */,
 				8311BAD11E381FA200166B2B /* main.m in Sources */,
 			);

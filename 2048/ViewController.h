@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "HelloScene.h"
 
 @interface ViewController : UIViewController{
     IBOutlet UILabel *textLabel;
