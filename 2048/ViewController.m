@@ -20,20 +20,20 @@ NSMutableArray *array;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    array = [self get4x4Array];
-    //array.addObject("Eezy")
-    //array.addObject("Tutorials")
-    //print(array)
-    [self printArray1];
-    for(int i = 0; i<2; i++){ // init arr with 2 sq
-        [self addNewSquare];
-    }
-    [self printArray];
+    [self newGame];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)newGame{
+    array = [self get4x4Array];
+    for(int i = 0; i<2; i++){ // init arr with 2 sq
+        [self addNewSquare];
+    }
+    [self printArray];
 }
 
 -(NSMutableArray*)get4x4Array {
@@ -50,7 +50,9 @@ NSMutableArray *array;
 -(void)printArray {
     for(int i = 0; i<4; i++){
         for (int j = 0; j < 4; j++){
-            printf("%i\t", [array[i][j] getValue] );
+            int x = [array[i][j] getValue];
+            if (x == -1) printf("*\t");
+            else printf("%i\t", x );
         }
         printf("\n");
     }
@@ -74,7 +76,7 @@ NSMutableArray *array;
 -(void)addNewSquare{
     int x = arc4random() % 4;
     int y = arc4random() % 4;
-    int count = 0;//temorary check to make sure all sq are not gull
+    int count = 0;//temorary check to make sure all sq are not full
     while(count<1000 && [array[x][y] getValue] != -1){
         x = arc4random() % 4;
         y = arc4random() % 4;
@@ -84,34 +86,6 @@ NSMutableArray *array;
     else printf("Game Over/Unable to find free space \n");
 }
 
-- (IBAction)swipeDetectedUp:(id)sender {
-    for(int y = 0; y < 4; y++){
-        for (int x = 0; x < 4; x++){
-            if([array[y][x] getValue] != -1){
-                int storedVal = [array[y][x] getValue];
-                int tmpy = y;
-                if( y-1 >= 0 ){
-                    while(tmpy > 0 && [array[tmpy-1][x] getValue] == -1){//move down y axis until end/non empty block
-                        --tmpy;
-
-                    }
-                    if(tmpy > 0 && [array[tmpy-1][x] getValue] == storedVal){//check if next block is the same as current.
-                        storedVal *= 2;
-                        --tmpy;
-                        [array[tmpy][x] setVal:-1];
-                    }
-                    [array[tmpy][x] setVal:storedVal];
-                }
-                if( tmpy != y ){
-                    [array[y][x] setVal:-1];
-                }
-            }
-        }
-    }
-    textLabel.text = @"Up";
-    [self addNewSquare];
-    [self printArray];
-}
 
 - (IBAction)swipeDetectedLeft:(id)sender {
     for(int y = 0; y < 4; y++){
@@ -137,14 +111,44 @@ NSMutableArray *array;
             }
         }
     }
+    textLabel.text = @"Left";
+    [self addNewSquare];
+    [self printArray];
+}
+
+- (IBAction)swipeDetectedUp:(id)sender {
+    for(int y = 0; y < 4; y++){
+        for (int x = 0; x < 4; x++){
+            if([array[y][x] getValue] != -1){
+                int storedVal = [array[y][x] getValue];
+                int tmpy = y;
+                if( y-1 >= 0 ){
+                    while(tmpy > 0 && [array[tmpy-1][x] getValue] == -1){//move down y axis until end/non empty block
+                        --tmpy;
+                        
+                    }
+                    if(tmpy > 0 && [array[tmpy-1][x] getValue] == storedVal){//check if next block is the same as current.
+                        storedVal *= 2;
+                        --tmpy;
+                        [array[tmpy][x] setVal:-1];
+                    }
+                    [array[tmpy][x] setVal:storedVal];
+                }
+                if( tmpy != y ){
+                    [array[y][x] setVal:-1];
+                }
+            }
+        }
+    }
     textLabel.text = @"Up";
     [self addNewSquare];
     [self printArray];
 }
 
+
 - (IBAction)swipeDetectedRight:(id)sender { //TODO
-    for(int y = 3; y > 0; y--){
-        for (int x = 3; x > 0; x--){
+    for(int y = 3; y >= 0; y--){
+        for (int x = 3; x >= 0; x--){
             if([array[y][x] getValue] != -1){
                 int storedVal = [array[y][x] getValue];
                 int tmpx = x;
@@ -167,13 +171,37 @@ NSMutableArray *array;
         }
     }
     textLabel.text = @"Right";
-    //[self addNewSquare];
+    [self addNewSquare];
     [self printArray];
-
+    
 }
 
 - (IBAction)swipeDetectedDown:(id)sender {
+    for(int y = 3; y >= 0; y--){
+        for (int x = 3; x >= 0; x--){
+            if([array[y][x] getValue] != -1){
+                int storedVal = [array[y][x] getValue];
+                int tmpy = y;
+                if( y+1 <= 3 ){
+                    while(tmpy < 3 && [array[tmpy+1][x] getValue] == -1){//move down y axis until end/non empty block
+                        ++tmpy;
+                    }
+                    if(tmpy < 3 && [array[tmpy+1][x] getValue] == storedVal){//check if next block is the same as current.
+                        storedVal *= 2;
+                        ++tmpy;
+                        [array[tmpy][x] setVal:-1];
+                    }
+                    [array[tmpy][x] setVal:storedVal];
+                }
+                if( tmpy != y ){
+                    [array[y][x] setVal:-1];
+                }
+            }
+        }
+    }
     textLabel.text = @"Down";
+    [self addNewSquare];
+    [self printArray];
 }
 
 
