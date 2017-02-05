@@ -14,12 +14,26 @@
 
 @implementation ViewController
 @synthesize textLabel;
+@synthesize Label1,Label2,Label3,Label4,Label5,Label6,Label7,Label8,Label9,Label10,Label11,Label12,Label13,Label14,Label15,Label16;
 
 NSMutableArray *array;
+NSMutableArray *viewArr;
+
+- (void)updateView {
+    int x = 0;
+    for(int i = 0; i<4; i++){
+        for (int j = 0; j < 4; j++){
+            if( [array[i][j] getValue] != -1) [viewArr[x] setText:[NSString stringWithFormat:@"%d" ,[array[i][j] getValue] ] ];
+            else [viewArr[x] setText:@""];
+            x++;
+        }
+    }
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    viewArr = [[NSMutableArray alloc] initWithObjects: Label1,Label2,Label3,Label4,Label5,Label6,Label7,Label8,Label9,Label10,Label11,Label12,Label13,Label14,Label15,Label16, nil ];
     [self newGame];
 }
 
@@ -34,6 +48,7 @@ NSMutableArray *array;
         [self addNewSquare];
     }
     [self printArray];
+    [self updateView];
 }
 
 -(NSMutableArray*)get4x4Array {
@@ -114,6 +129,7 @@ NSMutableArray *array;
     textLabel.text = @"Left";
     [self addNewSquare];
     [self printArray];
+    [self updateView];
 }
 
 - (IBAction)swipeDetectedUp:(id)sender {
@@ -143,6 +159,7 @@ NSMutableArray *array;
     textLabel.text = @"Up";
     [self addNewSquare];
     [self printArray];
+    [self updateView];
 }
 
 
@@ -173,7 +190,7 @@ NSMutableArray *array;
     textLabel.text = @"Right";
     [self addNewSquare];
     [self printArray];
-    
+    [self updateView];
 }
 
 - (IBAction)swipeDetectedDown:(id)sender {
@@ -202,6 +219,7 @@ NSMutableArray *array;
     textLabel.text = @"Down";
     [self addNewSquare];
     [self printArray];
+    [self updateView];
 }
 
 
