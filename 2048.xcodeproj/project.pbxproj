@@ -15,6 +15,7 @@
 		8311BADF1E381FA200166B2B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8311BADD1E381FA200166B2B /* LaunchScreen.storyboard */; };
 		8311BAEA1E381FA200166B2B /* _048Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8311BAE91E381FA200166B2B /* _048Tests.m */; };
 		8311BAF51E381FA200166B2B /* _048UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8311BAF41E381FA200166B2B /* _048UITests.m */; };
+		8369FD8C1E47E3AF000A9563 /* Square.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8369FD8B1E47E3AF000A9563 /* Square.xib */; };
 		837F01801E3AB14300BCC488 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 837F017F1E3AB14300BCC488 /* SpriteKit.framework */; };
 		837F88D71E4401D700EF9AB1 /* Square.m in Sources */ = {isa = PBXBuildFile; fileRef = 837F88D61E4401D600EF9AB1 /* Square.m */; };
 /* End PBXBuildFile section */
@@ -53,6 +54,7 @@
 		8311BAF01E381FA200166B2B /* 2048UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 2048UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8311BAF41E381FA200166B2B /* _048UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _048UITests.m; sourceTree = "<group>"; };
 		8311BAF61E381FA200166B2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8369FD8B1E47E3AF000A9563 /* Square.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Square.xib; sourceTree = "<group>"; };
 		837F017F1E3AB14300BCC488 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 		837F88D51E4401D600EF9AB1 /* Square.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Square.h; sourceTree = "<group>"; };
 		837F88D61E4401D600EF9AB1 /* Square.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Square.m; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				8311BAD61E381FA200166B2B /* ViewController.m */,
 				837F88D51E4401D600EF9AB1 /* Square.h */,
 				837F88D61E4401D600EF9AB1 /* Square.m */,
+				8369FD8B1E47E3AF000A9563 /* Square.xib */,
 				8311BAD81E381FA200166B2B /* Main.storyboard */,
 				8311BADB1E381FA200166B2B /* Assets.xcassets */,
 				8311BADD1E381FA200166B2B /* LaunchScreen.storyboard */,
@@ -266,6 +269,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8369FD8C1E47E3AF000A9563 /* Square.xib in Resources */,
 				8311BADF1E381FA200166B2B /* LaunchScreen.storyboard in Resources */,
 				8311BADC1E381FA200166B2B /* Assets.xcassets in Resources */,
 				8311BADA1E381FA200166B2B /* Main.storyboard in Resources */,

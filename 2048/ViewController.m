@@ -7,17 +7,20 @@
 //
 
 #import "ViewController.h"
+
 #import "Square.h"
 
 @interface ViewController ()
 @end
 
 @implementation ViewController
-@synthesize textLabel;
+@synthesize textLabel, resetLabel, scoreLabel;
 @synthesize Label1,Label2,Label3,Label4,Label5,Label6,Label7,Label8,Label9,Label10,Label11,Label12,Label13,Label14,Label15,Label16;
 
 NSMutableArray *array;
 NSMutableArray *viewArr;
+int score;
+
 
 - (void)updateView {
     int x = 0;
@@ -28,6 +31,8 @@ NSMutableArray *viewArr;
             x++;
         }
     }
+    scoreLabel.text = [NSString stringWithFormat:@"Score: %d", score];
+    printf("Score: %d\n", score);
 }
 
 - (void)viewDidLoad
@@ -42,6 +47,10 @@ NSMutableArray *viewArr;
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)resetGame:(id)sender{
+    [self newGame];
+}
+
 -(void)newGame{
     array = [self get4x4Array];
     for(int i = 0; i<2; i++){ // init arr with 2 sq
@@ -49,6 +58,7 @@ NSMutableArray *viewArr;
     }
     [self printArray];
     [self updateView];
+    score = 0;
 }
 
 -(NSMutableArray*)get4x4Array {
@@ -68,20 +78,6 @@ NSMutableArray *viewArr;
             int x = [array[i][j] getValue];
             if (x == -1) printf("*\t");
             else printf("%i\t", x );
-        }
-        printf("\n");
-    }
-    printf("\n");
-}
-
-
--(void)printArray1 {
-    int i = 0;
-    for(int y = 0; y<4; y++){
-        for (int x = 0; x < 4; x++){
-            printf("x:%i,y:%i\t", x,y);
-            //printf("i: %i\t", i);
-            i++;
         }
         printf("\n");
     }
@@ -115,6 +111,7 @@ NSMutableArray *viewArr;
                     }
                     if(tmpx > 0 && [array[y][tmpx-1] getValue] == storedVal){//check if next block is the same as current.
                         storedVal *= 2;
+                        score += storedVal;
                         --tmpx;
                         [array[y][tmpx] setVal:-1];
                     }
@@ -145,6 +142,7 @@ NSMutableArray *viewArr;
                     }
                     if(tmpy > 0 && [array[tmpy-1][x] getValue] == storedVal){//check if next block is the same as current.
                         storedVal *= 2;
+                        score += storedVal;
                         --tmpy;
                         [array[tmpy][x] setVal:-1];
                     }
@@ -176,6 +174,7 @@ NSMutableArray *viewArr;
                     }
                     if(tmpx < 3 && [array[y][tmpx+1] getValue] == storedVal){//check if next block is the same as current.
                         storedVal *= 2;
+                        score += storedVal;
                         ++tmpx;
                         [array[y][tmpx] setVal:-1];
                     }
@@ -205,6 +204,7 @@ NSMutableArray *viewArr;
                     }
                     if(tmpy < 3 && [array[tmpy+1][x] getValue] == storedVal){//check if next block is the same as current.
                         storedVal *= 2;
+                        score += storedVal;
                         ++tmpy;
                         [array[tmpy][x] setVal:-1];
                     }

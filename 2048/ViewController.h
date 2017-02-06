@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController{
-    IBOutlet UILabel *textLabel;
+    IBOutlet UILabel *textLabel,*scoreLabel;
     IBOutlet UILabel *Label1, *Label2, *Label3, *Label4,
                     *Label5, *Label6, *Label7, *Label8,
                     *Label9, *Label10, *Label11, *Label12,
                     *Label13, *Label14, *Label15, *Label16;
+    IBOutlet UIButton *resetLabel;
+
 }
 @property (strong, nonatomic) IBOutlet UILabel *textLabel;
 @property (strong, nonatomic) IBOutlet UILabel *Label1;
@@ -32,6 +34,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *Label14;
 @property (strong, nonatomic) IBOutlet UILabel *Label15;
 @property (strong, nonatomic) IBOutlet UILabel *Label16;
+@property (strong, nonatomic) IBOutlet UIButton *resetLabel;
+@property (strong, nonatomic) IBOutlet UILabel *scoreLabel;
 
 @property (strong, nonatomic) IBOutlet UISwipeGestureRecognizer *SwipeGestureLeft;
 @property (strong, nonatomic) IBOutlet UISwipeGestureRecognizer *SwipeGestureRight;
@@ -42,6 +46,8 @@
 - (IBAction)swipeDetectedLeft:(id)sender;
 - (IBAction)swipeDetectedDown:(id)sender;
 - (IBAction)swipeDetectedUp:(id)sender;
+- (IBAction)resetGame:(id)sender;
+
 
 @end
 

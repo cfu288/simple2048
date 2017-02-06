@@ -14,6 +14,14 @@
     bool init; // see's if this block is a new block, show appear animation
 }
 
+/*-(id)initWithCoder:(NSCoder *)aDecoder{
+    self = [super initWithCoder:aDecoder];
+    if(self){
+    
+    }
+    return self;
+}*/
+
 - (id)init {
     if (!(self = [super init]))
         return nil;
@@ -29,9 +37,12 @@
 }
 
 -(int)getValue{return value;}
+
 -(void)setVal:(int)inVal{
     value = inVal;
     init = NO;
 }
+
+-(bool)getInit{return init;}
 
 @end
