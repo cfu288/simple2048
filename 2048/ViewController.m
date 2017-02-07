@@ -51,6 +51,37 @@ int score;
     [self newGame];
 }
 
+-(void)checkIfGameOver {
+    bool retVal = YES;
+    for(int y = 3; y >= 0; y--){
+        for (int x = 3; x >= 0; x--){
+            int curVal = [array[y][x] getValue];
+            if (curVal == -1) { retVal = NO; break;} // there exists an empty space.
+            else{
+                //check left
+                if(x>0){ if([array[y][x-1] getValue] == curVal) { retVal = NO; break;} }
+                //check right
+                if(x<3){ if([array[y][x+1] getValue] == curVal) { retVal = NO; break;} }
+                //check up
+                if(y>0){ if([array[y-1][x] getValue] == curVal) { retVal = NO; break;} }
+                //check down
+                if(y<3){ if([array[y+1][x] getValue] == curVal) { retVal = NO; break;} }
+
+            }
+        }
+    }
+    if(retVal==YES){
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"You Lose"
+                                                                       message:@"You Lose"
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK"
+                                                                style:UIAlertActionStyleDefault
+                                                              handler:^(UIAlertAction * action) {}];
+        [alert addAction:defaultAction];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+}
+
 -(void)newGame{
     array = [self get4x4Array];
     for(int i = 0; i<2; i++){ // init arr with 2 sq
@@ -94,11 +125,14 @@ int score;
         count++;
     }
     if(count <1000) [array[x][y] initValue];
-    else printf("Game Over/Unable to find free space \n");
+    else {
+        printf("Game Over/Unable to find free space \n");
+    }
 }
 
 
 - (IBAction)swipeDetectedLeft:(id)sender {
+    bool moved = NO;
     for(int y = 0; y < 4; y++){
         for (int x = 0; x < 4; x++){
             if([array[y][x] getValue] != -1){
@@ -119,17 +153,20 @@ int score;
                 }
                 if( tmpx != x ){
                     [array[y][x] setVal:-1];
+                    moved = YES;
                 }
             }
         }
     }
     textLabel.text = @"Left";
-    [self addNewSquare];
+    if(moved==YES)[self addNewSquare];
     [self printArray];
     [self updateView];
+    [self checkIfGameOver];
 }
 
 - (IBAction)swipeDetectedUp:(id)sender {
+    bool moved = NO;
     for(int y = 0; y < 4; y++){
         for (int x = 0; x < 4; x++){
             if([array[y][x] getValue] != -1){
@@ -150,18 +187,21 @@ int score;
                 }
                 if( tmpy != y ){
                     [array[y][x] setVal:-1];
+                    moved = YES;
                 }
             }
         }
     }
     textLabel.text = @"Up";
-    [self addNewSquare];
+    if(moved==YES)[self addNewSquare];
     [self printArray];
     [self updateView];
+    [self checkIfGameOver];
 }
 
 
 - (IBAction)swipeDetectedRight:(id)sender { //TODO
+    bool moved = NO;
     for(int y = 3; y >= 0; y--){
         for (int x = 3; x >= 0; x--){
             if([array[y][x] getValue] != -1){
@@ -182,17 +222,20 @@ int score;
                 }
                 if( tmpx != x ){
                     [array[y][x] setVal:-1];
+                    moved = YES;
                 }
             }
         }
     }
     textLabel.text = @"Right";
-    [self addNewSquare];
+    if(moved==YES)[self addNewSquare];
     [self printArray];
     [self updateView];
+    [self checkIfGameOver];
 }
 
 - (IBAction)swipeDetectedDown:(id)sender {
+    bool moved = NO;
     for(int y = 3; y >= 0; y--){
         for (int x = 3; x >= 0; x--){
             if([array[y][x] getValue] != -1){
@@ -212,14 +255,16 @@ int score;
                 }
                 if( tmpy != y ){
                     [array[y][x] setVal:-1];
-                }
+                    moved =YES;
+                }else{}
             }
         }
     }
     textLabel.text = @"Down";
-    [self addNewSquare];
+    if(moved==YES)[self addNewSquare];
     [self printArray];
     [self updateView];
+    [self checkIfGameOver];
 }
 
 
