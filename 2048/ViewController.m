@@ -72,12 +72,16 @@ int score;
     }
     if(retVal==YES){
         UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"You Lose"
-                                                                       message:@"You Lose"
+                                                                       message:[NSString stringWithFormat:@"Score: %d", score]
                                                                 preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK"
                                                                 style:UIAlertActionStyleDefault
                                                               handler:^(UIAlertAction * action) {}];
+        UIAlertAction* resetAction = [UIAlertAction actionWithTitle:@"Reset"
+                                                                style:UIAlertActionStyleDefault
+                                                            handler:^(UIAlertAction * action) {[self newGame];}];
         [alert addAction:defaultAction];
+        [alert addAction:resetAction];
         [self presentViewController:alert animated:YES completion:nil];
     }
 }
